@@ -9,28 +9,38 @@ var game = {
 	chosenChar: "",
 	charHealth: "",
 	enemyHealth: "",
+	charAttack: "",
+	enemyAttack: "",
 
 	characters: [{
         name: "Jon Snow",
-        health: 120,
+        attack: 10,
+        counterattack: 20,
+        health: 150,
         image: "<img src='assets/images/jonsnowsm.jpg'>"
     },
 
     {
         name: "Ramsay Bolton",
+        attack: 6,
+        counterattack: 5,
         health: 100,
         image: "<img src='assets/images/ramsaysm.jpg'>"
     },
 
     {
         name: "Tormund Giantsbane",
-        health: 130,
+        attack: 12,
+        counterattack: 25,
+        health: 200,
         image: "<img src='assets/images/Tormundsm.jpg'>"
     },
 
     {
         name: "Daario Naharis",
-        health: 110,
+        attack: 8,
+        counterattack: 15,
+        health: 120,
         image: "<img src='assets/images/Daariosm.jpg'>"
     }],
 
@@ -42,9 +52,12 @@ var game = {
         c.addClass("selChar " + game.characters[i].name);
         c.attr('data-name', game.characters[i].name);
         c.attr('data-health', game.characters[i].health);
+       	c.attr('data-attack', game.characters[i].attack);
+       	c.attr('data-counterattack', game.characters[i].counterattack);
         c.attr('data-index', i);
         c.html(game.characters[i].image);
-        c.append("<p id='charTitle'>" + game.characters[i].name + "</p>" + " " + "<p id='charHealth'>" + game.characters[i].health + "</p>");
+        c.append("<p id='charTitle'>" + game.characters[i].name + "</p>" + " " + "<h4 id='charHealth'>" + game.characters[i].health + "</h4>");
+
 
         $("#selCharpre").append(c);
     }
@@ -63,6 +76,7 @@ var game = {
 				game.chosenChar = $(this).data("name");
 				$(this).attr('id', "chosenChar");
 				game.charHealth = $(this).data("health");
+				game.charAttack = $(this).data("attack");
 				game.clickChar ++;
 			}
 	});	
@@ -73,6 +87,8 @@ var game = {
 				$('.Defender').appendTo('#Defender');
 				$(this).attr('id', "chosenEnemy");
 				game.chosenEnemy = $(this).data("name");
+				game.enemyHealth = $(this).data("health");
+				game.enemyAttack = $(this).data("counterattack");
 				game.clickEnemy	 ++;
 			} else {
 				$('#results').html("You've already chosen " + game.chosenEnemy);
@@ -80,14 +96,23 @@ var game = {
 	});
 
 	//Attack button function
-    $('#buttonAttack').on('click', 'button', function() {	
-			//var charAttack = 8
-			//var Enemy = $('#chosenEnemy').data('name');
-			//$('#chosenEnemy').attr("#charHealth", - charAttack);
-			//charAttack + 8;
-			//$('#chosenChar').attr('#charHealth', - 25);
-			alert("click handler working");
-			//$('#results').html("You attacked " + game.chosenEnemy);
+    $('#buttonAttack').on('click', function() {	
+	
+		if (game.charHealth || game.enemyHealth >= 1) {
+			game.enemyHealth -= game.charAttack;			
+			
+			game.charHealth -= game.enemyAttack;
+			console.log(game.enemyHealth)
+			console.log(game.charHealth);
+			$('#chosenChar h4 ').text(game.charHealth);
+			$('#chosenEnemy h4 ').text(game.enemyHealth);
+			$('#results').html("You attacked " + game.chosenEnemy + " for " + game.charAttack + " points! ");
+			$('#results').append( game.chosenEnemy + " counter attacked you for " + game.enemyAttack + " points");
+			game.charAttack += 8;
+		} else {
+			$('#results').html("You defeated ");
+		}
+
 
 		
 	});

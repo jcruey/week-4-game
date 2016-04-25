@@ -8,7 +8,13 @@ body {
     color: black;
     font-weight: bold;
 }
-#charHealth {
+.Defender #charTitle {
+    position: relative;
+    bottom: 180px;
+    color: white;
+    font-weight: bold;
+}
+h4#charHealth {
     position: relative;
     bottom: 55px;
     font-weight: bold;
