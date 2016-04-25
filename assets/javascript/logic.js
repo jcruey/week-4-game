@@ -1,6 +1,9 @@
 $(document).ready(function() {
 
+// Game object with character attributes
 var game = {
+
+	clickEnemy: 0,
 
 	characters: [{
         name: "Jon Snow",
@@ -53,15 +56,19 @@ var game = {
 
     //Character select function
     $(".selChar").on("click", function(){
-				$(this).siblings().removeClass("selChar").addClass("Enemies");
+				$(this).siblings().removeClass("selChar").addClass("Enemies").attr('id', 'combatant');
 				$('.selChar').appendTo('#selChar');
 				$('.Enemies').appendTo("#Enemies");
 	});	
     //Enemy select function
-    $(".Enemies").on("click", function(){
+    $('#Enemies').on('click', 'button', function() {
+    		if (game.clickEnemy <= 0) {
     			$(this).removeClass("Enemies").addClass("Defender");
 				$('.Defender').appendTo('#Defender');
-				console.log(this);
+				game.clickEnemy ++;
+			} else {
+				$('#results').html("You've already chosen an Enemy combatant");
+			}
 	});
 
 });
