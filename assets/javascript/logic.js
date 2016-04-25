@@ -5,44 +5,43 @@ var game = {
 
 	clickEnemy: 0,
 	clickChar: 0,
+	chosenEnemy: "",
+	chosenChar: "",
+	charHealth: "",
+	enemyHealth: "",
 
 	characters: [{
         name: "Jon Snow",
-        attack: 6,
-        counterattack: 25,
         health: 120,
         image: "<img src='assets/images/jonsnowsm.jpg'>"
     },
 
     {
         name: "Ramsay Bolton",
-        attack: 4,
-        counterattack: 25,
         health: 100,
         image: "<img src='assets/images/ramsaysm.jpg'>"
     },
 
     {
         name: "Tormund Giantsbane",
-        attack: 8,
-        counterattack: 25,
         health: 130,
         image: "<img src='assets/images/Tormundsm.jpg'>"
     },
 
     {
         name: "Daario Naharis",
-        attack: 5,
-        counterattack: 25,
         health: 110,
         image: "<img src='assets/images/Daariosm.jpg'>"
     }],
 
+    // function to create character buttons
     charList: function() {   
     	for (var i = 0; i < game.characters.length; i++) {
 
         var c = $('<button>');
         c.addClass("selChar " + game.characters[i].name);
+        c.attr('data-name', game.characters[i].name);
+        c.attr('data-health', game.characters[i].health);
         c.attr('data-index', i);
         c.html(game.characters[i].image);
         c.append("<p id='charTitle'>" + game.characters[i].name + "</p>" + " " + "<p id='charHealth'>" + game.characters[i].health + "</p>");
@@ -52,7 +51,7 @@ var game = {
 }    
 
 };
-
+	// Calls the charList function to display buttons
     game.charList();
 
     //Character select function
@@ -61,6 +60,9 @@ var game = {
 				$(this).siblings().removeClass("selChar").addClass("Enemies").attr('id', 'combatant');
 				$('.selChar').appendTo('#selChar');
 				$('.Enemies').appendTo("#Enemies");
+				game.chosenChar = $(this).data("name");
+				$(this).attr('id', "chosenChar");
+				game.charHealth = $(this).data("health");
 				game.clickChar ++;
 			}
 	});	
@@ -69,10 +71,27 @@ var game = {
     		if (game.clickEnemy <= 0) {
     			$(this).removeClass("Enemies").addClass("Defender");
 				$('.Defender').appendTo('#Defender');
+				$(this).attr('id', "chosenEnemy");
+				game.chosenEnemy = $(this).data("name");
 				game.clickEnemy	 ++;
 			} else {
-				$('#results').html("You've already chosen an Enemy combatant");
+				$('#results').html("You've already chosen " + game.chosenEnemy);
 			}
 	});
+
+	//Attack button function
+    $('#buttonAttack').on('click', 'button', function() {	
+			//var charAttack = 8
+			//var Enemy = $('#chosenEnemy').data('name');
+			//$('#chosenEnemy').attr("#charHealth", - charAttack);
+			//charAttack + 8;
+			//$('#chosenChar').attr('#charHealth', - 25);
+			alert("click handler working");
+			//$('#results').html("You attacked " + game.chosenEnemy);
+
+		
+	});
+
+
 
 });

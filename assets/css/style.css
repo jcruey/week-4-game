@@ -4,13 +4,15 @@ body {
 }
 #charTitle {
     position: relative;
-    bottom: 170px;
+    bottom: 180px;
     color: black;
+    font-weight: bold;
 }
 #charHealth {
     position: relative;
     bottom: 55px;
-    color: green;
+    font-weight: bold;
+    color: lime;
 }
 #selChar img {
 	margin-top: 3px;
@@ -28,9 +30,14 @@ body {
 button {
 	height: 177px;
 	padding: 1px;
-	border:none;
+	border-color: #000;
 }
 #buttonAttack {
+	color: #fff;
+	width: 5%;
+    height: 33px;
+    background-color: #d9534f;
+    border-color: #d43f3a
 	height: 30px;
 }
 #buttonAttack h4 {
