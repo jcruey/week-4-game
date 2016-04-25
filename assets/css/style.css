@@ -2,15 +2,39 @@ body {
 	background-image: url("../images/gotbck.jpg");
 	color: white;
 }
+#charTitle {
+    position: relative;
+    bottom: 170px;
+    color: black;
+}
+#charHealth {
+    position: relative;
+    bottom: 55px;
+    color: green;
+}
 #selChar img {
-	border: 20px solid white;
+	margin-top: 3px;
+	border: 24px solid white;
 }
 #selCharpre img {
-	border: 20px solid white;
+	border: 24px solid white;
 }
 #Enemies img {
-	border: 20px solid red;
+	border: 24px solid red;
 }
 #Defender img {
-	border: 20px solid black;
+	border: 24px solid black;
+}
+button {
+	background-color: black;
+	height: 177px;
+	padding: 1px;
+	border:none;
+}
+#buttonAttack {
+	height: 30px;
+}
+#buttonAttack h4 {
+	position: relative;
+	bottom: 10px;
 }

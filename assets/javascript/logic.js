@@ -1,45 +1,55 @@
 $(document).ready(function() {
 
-	var jonSnow = {
+var game = {
+
+	characters: [{
         name: "Jon Snow",
-        attack: 50,
+        attack: 6,
+        counterattack: 25,
         health: 120,
         image: "<img src='assets/images/jonsnowsm.jpg'>"
-    }
+    },
 
-    var ramBolton = {
+    {
         name: "Ramsay Bolton",
-        attack: 50,
+        attack: 4,
+        counterattack: 25,
         health: 100,
         image: "<img src='assets/images/ramsaysm.jpg'>"
-    }
+    },
 
-    var torGiant = {
+    {
         name: "Tormund Giantsbane",
-        attack: 50,
+        attack: 8,
+        counterattack: 25,
         health: 130,
         image: "<img src='assets/images/Tormundsm.jpg'>"
-    }
+    },
 
-    var daarNahar = {
+    {
         name: "Daario Naharis",
-        attack: 50,
+        attack: 5,
+        counterattack: 25,
         health: 110,
         image: "<img src='assets/images/Daariosm.jpg'>"
-    }
+    }],
 
-    var characters = [jonSnow, ramBolton, torGiant, daarNahar];
-   
+    charList: function() {   
+    	for (var i = 0; i < game.characters.length; i++) {
 
-    // Character selection
-    for (var i = 0; i < characters.length; i++) {
-
-        var c = $('<button>').addClass("selChar")
-        c.attr('data-char', characters[i].name)
-        c.html(characters[i].image); 
+        var c = $('<button>');
+        c.addClass("selChar " + game.characters[i].name);
+        c.attr('data-index', i);
+        c.html(game.characters[i].image);
+        c.append("<p id='charTitle'>" + game.characters[i].name + "</p>" + " " + "<p id='charHealth'>" + game.characters[i].health + "</p>");
 
         $("#selCharpre").append(c);
     }
+}    
+
+};
+
+    game.charList();
 
     //Character select function
     $(".selChar").on("click", function(){
@@ -49,8 +59,9 @@ $(document).ready(function() {
 	});	
     //Enemy select function
     $(".Enemies").on("click", function(){
-    			$('#Enemies').removeClass("Enemies").addClass("Defender");
+    			$(this).removeClass("Enemies").addClass("Defender");
 				$('.Defender').appendTo('#Defender');
+				console.log(this);
 	});
 
 });
