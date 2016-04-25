@@ -98,19 +98,20 @@ var game = {
 	//Attack button function
     $('#buttonAttack').on('click', function() {	
 	
-		if (game.charHealth || game.enemyHealth >= 1) {
+		if (game.charHealth && game.enemyHealth >= 0) {
 			game.enemyHealth -= game.charAttack;			
-			
 			game.charHealth -= game.enemyAttack;
-			console.log(game.enemyHealth)
+			console.log(game.enemyHealth);
 			console.log(game.charHealth);
 			$('#chosenChar h4 ').text(game.charHealth);
 			$('#chosenEnemy h4 ').text(game.enemyHealth);
 			$('#results').html("You attacked " + game.chosenEnemy + " for " + game.charAttack + " points! ");
 			$('#results').append( game.chosenEnemy + " counter attacked you for " + game.enemyAttack + " points");
 			game.charAttack += 8;
+		} else if (game.charHealth >= 1) {
+			$('#results').html("You defeated " + game.chosenEnemy);
 		} else {
-			$('#results').html("You defeated ");
+			$('#results').html("You were defeated by " + game.chosenEnemy + ". Game Over!");
 		}
 
 
