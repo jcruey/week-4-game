@@ -1,0 +1,16 @@
+body {
+	background-image: url("../images/gotbck.jpg");
+	color: white;
+}
+#selChar img {
+	border: 20px solid white;
+}
+#selCharpre img {
+	border: 20px solid white;
+}
+#Enemies img {
+	border: 20px solid red;
+}
+#Defender img {
+	border: 20px solid black;
+}
