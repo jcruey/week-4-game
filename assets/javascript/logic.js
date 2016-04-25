@@ -11,6 +11,7 @@ var game = {
 	enemyHealth: "",
 	charAttack: "",
 	enemyAttack: "",
+	enemyCount: "",
 
 	characters: [{
         name: "Jon Snow",
@@ -58,7 +59,7 @@ var game = {
         c.html(game.characters[i].image);
         c.append("<p id='charTitle'>" + game.characters[i].name + "</p>" + " " + "<h4 id='charHealth'>" + game.characters[i].health + "</h4>");
 
-
+        $('#buttonNewGame').hide();
         $("#selCharpre").append(c);
     }
 }    
@@ -82,7 +83,7 @@ var game = {
 	});	
     //Enemy select function
     $('#Enemies').on('click', 'button', function() {
-    		if (game.clickEnemy <= 0) {
+    		if (game.clickEnemy <= 0 || game.enemyHealth <= 0) {
     			$(this).removeClass("Enemies").addClass("Defender");
 				$('.Defender').appendTo('#Defender');
 				$(this).attr('id', "chosenEnemy");
@@ -110,11 +111,22 @@ var game = {
 			game.charAttack += 8;
 		} else if (game.charHealth >= 1) {
 			$('#results').html("You defeated " + game.chosenEnemy);
+			$('#Defender').empty();
 		} else {
 			$('#results').html("You were defeated by " + game.chosenEnemy + ". Game Over!");
+			$('#buttonNewGame').show();
 		}
 
+	//New Game function
+	$('#buttonNewGame').on('click', function() {
+		$('#results').empty();
+		$('#Defender').empty();
+		$('#Enemies').empty();
+		$('#selChar').empty();
+		$('#selCharpre').empty();
+		game.charList();
 
+	});	
 		
 	});
 

@@ -50,3 +50,15 @@ button {
 	position: relative;
 	bottom: 10px;
 }
+#buttonNewGame {
+	color: #fff;
+	width: 5%;
+    height: 33px;
+    background-color: #337ab7;
+    border-color: #d43f3a
+	height: 30px;
+}
+#buttonNewGame h4 {
+	position: relative;
+	bottom: 10px;
+}
