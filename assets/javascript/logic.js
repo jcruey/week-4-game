@@ -11,7 +11,7 @@ var game = {
 	enemyHealth: "",
 	charAttack: "",
 	enemyAttack: "",
-	enemyCount: "",
+	enemyCount: 3,
 
 	characters: [{
         name: "Jon Snow",
@@ -79,6 +79,7 @@ var game = {
 				game.charHealth = $(this).data("health");
 				game.charAttack = $(this).data("attack");
 				game.clickChar ++;
+
 			}
 	});	
     //Enemy select function
@@ -109,13 +110,20 @@ var game = {
 			$('#results').html("You attacked " + game.chosenEnemy + " for " + game.charAttack + " points! ");
 			$('#results').append( game.chosenEnemy + " counter attacked you for " + game.enemyAttack + " points");
 			game.charAttack += 8;
+		} else if (game.enemyCount == 0) {
+			$('#results').html("You defeated all the Enemies. You Win!! ");
+			game.clickChar = 0;
+			$('#buttonNewGame').show();
 		} else if (game.charHealth >= 1) {
 			$('#results').html("You defeated " + game.chosenEnemy);
+			game.enemyCount --;
 			$('#Defender').empty();
 		} else {
 			$('#results').html("You were defeated by " + game.chosenEnemy + ". Game Over!");
+			game.clickChar = 0;
 			$('#buttonNewGame').show();
 		}
+	});
 
 	//New Game function
 	$('#buttonNewGame').on('click', function() {
@@ -127,9 +135,4 @@ var game = {
 		game.charList();
 
 	});	
-		
-	});
-
-
-
 });
