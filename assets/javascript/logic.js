@@ -19,7 +19,7 @@ var game = {
         attack: 10,
         counterattack: 20,
         health: 150,
-        image: "<img src='assets/images/jonsnowsm.jpg'>"
+        image: "<img src='assets/images/jonsnowsm1.jpg'>"
     },
 
     {
