@@ -69,10 +69,10 @@ var game = {
     game.charList();
 
     //Character select function
-    $(".selChar").on("click", function(){
+    $('#selCharpre').on('click', 'button', function(){
     	if (game.clickChar <=0) {
 				$(this).siblings().removeClass("selChar").addClass("Enemies").attr('id', 'combatant');
-				$('.selChar').appendTo('#selChar');
+				$('#selChar').appendTo('#selChar');
 				$('.Enemies').appendTo("#Enemies");
 				game.chosenChar = $(this).data("name");
 				$(this).attr('id', "chosenChar");
@@ -105,7 +105,6 @@ var game = {
 		if (game.enemyCount == 0 && game.clickChar >= 1) {
 			$('#results').html("You defeated all the Enemies. You Win!! ");
 			game.clickChar = 0;
-			console.log(game.enemyCount);
 			$('#buttonNewGame').show();
 		} else if (game.clickEnemy == 0) {
 			$('#results').html("You need to select an Enemy to attack");
@@ -137,7 +136,7 @@ var game = {
 		$('#Enemies').empty();
 		$('#selChar').empty();
 		$('#selCharpre').empty();
-		console.log(game.clickChar);
+		game.enemyCount = 3;
 		game.charList();
 
 	});	
