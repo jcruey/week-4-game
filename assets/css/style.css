@@ -1,23 +1,27 @@
 body {
 	background-image: url("../images/gotbck.jpg");
 	color: white;
+	font-family: 'Cardo', serif;
 }
 #charTitle {
     position: relative;
     bottom: 180px;
     color: black;
-    font-weight: bold;
+    font-family: 'Cardo', serif;
+    font-weight: bolder;
 }
 .Defender #charTitle {
     position: relative;
     bottom: 180px;
     color: white;
-    font-weight: bold;
+    font-family: 'Cardo', serif;
+    font-weight: bolder;
 }
 h4#charHealth {
     position: relative;
-    bottom: 55px;
-    font-weight: bold;
+    bottom: 60px;
+    font-family: 'Cardo', serif;
+    font-weight: bolder;
     color: lime;
 }
 #selChar img {
@@ -38,6 +42,12 @@ button {
 	padding: 1px;
 	border-color: #000;
 }
+#selChar button {
+	border-color: lime;
+}
+#Defender button {
+	border-color: lime;
+}
 #buttonAttack {
 	color: #fff;
 	width: 5%;
@@ -47,6 +57,7 @@ button {
 	height: 30px;
 }
 #buttonAttack h4 {
+	font-family: 'Cardo', serif;
 	position: relative;
 	bottom: 10px;
 }
@@ -59,6 +70,11 @@ button {
 	height: 30px;
 }
 #buttonNewGame h4 {
+	font-family: 'Cardo', serif;
 	position: relative;
 	bottom: 10px;
+}
+audio {
+	position: relative;
+	left: 30%;
 }

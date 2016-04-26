@@ -1,5 +1,6 @@
 $(document).ready(function() {
 
+
 // Game object with character attributes
 var game = {
 
@@ -72,7 +73,7 @@ var game = {
     $('#selCharpre').on('click', 'button', function(){
     	if (game.clickChar <=0) {
 				$(this).siblings().removeClass("selChar").addClass("Enemies").attr('id', 'combatant');
-				$('#selChar').appendTo('#selChar');
+				$('.selChar').appendTo('#selChar');
 				$('.Enemies').appendTo("#Enemies");
 				game.chosenChar = $(this).data("name");
 				$(this).attr('id', "chosenChar");
